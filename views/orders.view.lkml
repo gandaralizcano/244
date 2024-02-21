@@ -10,6 +10,7 @@ view: orders {
 
   dimension: id {
     primary_key: yes
+
     type: number
     sql: ${TABLE}.id ;;
   }
@@ -27,11 +28,22 @@ view: orders {
 
   dimension: status {
     type: string
+
     sql: ${TABLE}.status ;;
   }
 
   dimension: user_id {
     type: number
+    link: {
+      label: "Drill test"
+      url: "
+      {% if status._value == 'COMPLETED' %}
+      https://gcpl240.cloud.looker.com/dashboards/59
+      {% elsif status._value == 'CANCELLED' %}
+      https://gcpl240.cloud.looker.com/dashboards/59
+      {% endif %}
+      "
+      icon_url: "https://lh3.googleusercontent.com/LB46lrUI6NnAoPcUzKKuSFpaxh88gOgqvzKuf4P69wcRse542XNch2t6FYUu=s48-c"}
     # hidden: yes
     sql: ${TABLE}.user_id ;;
   }
@@ -43,18 +55,18 @@ view: orders {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	users.id,
-	users.first_name,
-	users.last_name,
-	billion_orders.count,
-	fakeorders.count,
-	hundred_million_orders.count,
-	hundred_million_orders_wide.count,
-	order_items.count,
-	order_items_vijaya.count,
-	ten_million_orders.count
-	]
+  id,
+  users.id,
+  users.first_name,
+  users.last_name,
+  billion_orders.count,
+  fakeorders.count,
+  hundred_million_orders.count,
+  hundred_million_orders_wide.count,
+  order_items.count,
+  order_items_vijaya.count,
+  ten_million_orders.count
+  ]
   }
 
 }
