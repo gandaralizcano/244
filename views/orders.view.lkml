@@ -17,11 +17,31 @@ view: orders {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: created {
+  dimension_group: created_date {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
+
+  dimension_group: first_provider_visit{
+    label: "First Provider Visit"
+    description: "Date of the first non-cancelled visit with a provider for a patient"
+    type: time
+    timeframes: [
+      raw,
+      time,
+      hour_of_day,
+      hour,
+      day_of_week,
+      day_of_week_index,
+      date,
+      week,
+      month,
+      year
+    ]
+    sql: ${TABLE}.created_at ;;
+  }
+
     # Here's what a typical dimension looks like in LookML.
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Status" in Explore.
