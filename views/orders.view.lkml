@@ -24,7 +24,7 @@ view: orders {
   }
 
   dimension_group: first_provider_visit{
-    label: "First Provider Visit"
+    # label: "First Provider Visit"
     description: "Date of the first non-cancelled visit with a provider for a patient"
     type: time
     timeframes: [
