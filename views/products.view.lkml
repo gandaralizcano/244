@@ -27,6 +27,10 @@ view: products {
     sql: ${TABLE}.category ;;
   }
 
+dimension: testing {
+  type: number
+  sql: if (${category} = "Jeans",30,50);;
+}
   dimension: department {
     type: string
     sql: ${TABLE}.department ;;
