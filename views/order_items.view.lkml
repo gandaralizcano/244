@@ -58,12 +58,46 @@ view: order_items {
 
   measure: total_sale_price {
     type: sum
-    sql: ${sale_price} ;;  }
+    sql: ${sale_price} ;;
+    }
+
+  # dimension: demo {
+  #   type: number
+  #   # sql: 1 ;;
+  #   html:
+  #   {% if order_items.average_sale_price._value > 0 %}
+  #   <p style="color: Green; background-color: white;">{{ value }}</p>
+  #   {% else %}
+  #   <p style="color: Red; background-color: white;">{{ value }}</p>
+  #   {% endif %}
+  #   ;;
+  # }
+
   measure: average_sale_price {
     type: average
-    sql: ${sale_price} ;;  }
+    sql: ${sale_price}*-1 ;;
+    html:
+    {% if value > 0 %}
+    <p style="color: Green; background-color: white;">{{ value }}</p>
+    {% else %}
+    <p style="color: Red; background-color: white;">{{ value }}</p>
+
+    {% endif %}
+    ;;
+
+    }
+
   measure: count {
     type: count
+    html:
+   {% if value > 0 %}
+<p style="color: Green; background-color: white;">{{ value }}</p>
+{% else %}
+<p style="color: Red; background-color: white;">{{ value }}</p>
+
+{% endif %}
+;;
+
     drill_fields: [id, orders.id, inventory_items.id]
   }
 }
