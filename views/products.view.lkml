@@ -58,9 +58,15 @@ dimension: testing {
   measure: total_retail_price {
     type: sum
     sql: ${retail_price} ;;  }
+
   measure: average_retail_price {
     type: average
     sql: ${retail_price} ;;  }
+
+  measure: average_testing {
+    type: number
+    sql: ${total_retail_price}/${average_retail_price} ;;
+  }
 
   dimension: sku {
     type: string
