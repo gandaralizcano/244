@@ -68,10 +68,6 @@ drill_fields: [user_id,id]
     sql: ${TABLE}.user_id ;;
   }
 
-  measure: user_id_sum {
-    type: sum
-    sql: ${user_id} ;;
-  }
   measure: count {
     type: count
     drill_fields: [detail*]
