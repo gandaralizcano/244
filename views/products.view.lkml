@@ -76,4 +76,10 @@ dimension: testing {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
+
+  dimension_group: created_date {
+    type: time
+    timeframes: [raw, time, date, week, month, month_name, quarter, year]
+    sql: ${TABLE}.created_at ;;
+  }
 }
